@@ -63,6 +63,8 @@ CaseConfigParamInput_IndexType = CaseConfigInput(
             IndexType.DISKANN.value,
             IndexType.Flat.value,
             IndexType.AUTOINDEX.value,
+            IndexType.GPUIVFFlat.value,
+            IndexType.GPUIVFPQ.value,
         ],
     },
 )
@@ -192,7 +194,7 @@ CaseConfigParamInput_Nlist = CaseConfigInput(
         "value": 1000,
     },
     isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
-    == IndexType.IVFFlat.value,
+    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value},
 )
 
 CaseConfigParamInput_Nprobe = CaseConfigInput(
@@ -204,7 +206,7 @@ CaseConfigParamInput_Nprobe = CaseConfigInput(
         "value": 10,
     },
     isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
-    == IndexType.IVFFlat.value,
+    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value},
 )
 
 CaseConfigParamInput_Lists = CaseConfigInput(

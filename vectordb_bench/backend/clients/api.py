@@ -19,6 +19,8 @@ class IndexType(str, Enum):
     Flat = "FLAT"
     AUTOINDEX = "AUTOINDEX"
     ES_HNSW = "hnsw"
+    GPUIVFFlat = "GPU_IVF_FLAT"
+    GPUIVFPQ = "GPU_IVFPQ"
 
 
 class DBConfig(ABC, BaseModel):

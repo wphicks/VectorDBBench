@@ -3,7 +3,7 @@ from ..api import DBConfig, DBCaseConfig, MetricType, IndexType
 
 
 class MilvusConfig(DBConfig):
-    uri: SecretStr = "http://localhost:19530"
+    uri: SecretStr = "http://milvus:19530"
 
     def to_dict(self) -> dict:
         return {"uri": self.uri.get_secret_value()}

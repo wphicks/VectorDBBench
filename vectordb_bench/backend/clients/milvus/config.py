@@ -96,6 +96,30 @@ class GPUIVFFlatConfig(MilvusIndexConfig, DBCaseConfig):
         }
 
 
+class GPUIVFPQConfig(MilvusIndexConfig, DBCaseConfig):
+    nlist: int
+    nprobe: int | None = None
+    m: int | None = None
+    nbits: int | None = None
+    index: IndexType = IndexType.GPUIVFPQ
+
+    def index_param(self) -> dict:
+        return {
+            "metric_type": self.parse_metric(),
+            "index_type": self.index.value,
+            "params": {
+                "nlist": self.nlist,
+                "m": self.m,
+                "nbits": self.nbits,
+            },
+        }
+
+    def search_param(self) -> dict:
+        return {
+            "metric_type": self.parse_metric(),
+            "params": {"nprobe": self.nprobe},
+        }
+
 
 class IVFFlatConfig(MilvusIndexConfig, DBCaseConfig):
     nlist: int
@@ -139,5 +163,6 @@ _milvus_case_config = {
     IndexType.IVFFlat: IVFFlatConfig,
     IndexType.Flat: FLATConfig,
     IndexType.GPUIVFFlat: GPUIVFFlatConfig,
+    IndexType.GPUIVFPQ: GPUIVFPQConfig,
 }
 

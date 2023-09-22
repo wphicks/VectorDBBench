@@ -182,7 +182,7 @@ CaseConfigParamInput_Nlist = CaseConfigInput(
         "value": 1000,
     },
     isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
-    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value},
+    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value, IndexType.GPUIVFPQ.value},
 )
 
 CaseConfigParamInput_Nprobe = CaseConfigInput(
@@ -194,7 +194,33 @@ CaseConfigParamInput_Nprobe = CaseConfigInput(
         "value": 10,
     },
     isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
-    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value},
+    in {IndexType.IVFFlat.value, IndexType.GPUIVFFlat.value, IndexType.GPUIVFPQ.value},
+)
+
+CaseConfigParamInput_m = CaseConfigInput(
+    label=CaseConfigParamType.m,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 1,
+        "max": 65536,
+        "value": 4,
+    },
+    isDisplayed=lambda config: config.get(
+        CaseConfigParamType.IndexType, None
+    ) == IndexType.GPUIVFPQ.value
+)
+
+CaseConfigParamInput_nbits = CaseConfigInput(
+    label=CaseConfigParamType.nbits,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 1,
+        "max": 65536,
+        "value": 8,
+    },
+    isDisplayed=lambda config: config.get(
+        CaseConfigParamType.IndexType, None
+    ) == IndexType.GPUIVFPQ.value
 )
 
 CaseConfigParamInput_Lists = CaseConfigInput(

@@ -45,8 +45,7 @@ class CaseConfigParamType(Enum):
     numCandidates = "num_candidates"
     lists = "lists"
     probes = "probes"
-    quantizationType = "quantizationType"
-    quantizationRatio = "quantizationRatio"
+    m = "m"
 
 
 class CustomizedCase(BaseModel):

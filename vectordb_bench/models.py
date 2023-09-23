@@ -46,6 +46,7 @@ class CaseConfigParamType(Enum):
     lists = "lists"
     probes = "probes"
     m = "m"
+    nbits = "nbits"
 
 
 class CustomizedCase(BaseModel):

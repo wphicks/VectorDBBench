@@ -45,6 +45,7 @@ class CaseConfigParamType(Enum):
     numCandidates = "num_candidates"
     lists = "lists"
     probes = "probes"
+    m = "m"
 
 
 class CustomizedCase(BaseModel):

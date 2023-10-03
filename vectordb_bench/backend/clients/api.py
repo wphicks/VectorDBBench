@@ -20,7 +20,7 @@ class IndexType(str, Enum):
     AUTOINDEX = "AUTOINDEX"
     ES_HNSW = "hnsw"
     GPUIVFFlat = "GPU_IVF_FLAT"
-    GPUIVFPQ = "GPU_IVFPQ"
+    GPUIVFPQ = "GPU_IVF_PQ"
 
 
 class DBConfig(ABC, BaseModel):

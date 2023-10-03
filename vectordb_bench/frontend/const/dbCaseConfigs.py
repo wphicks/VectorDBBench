@@ -287,6 +287,8 @@ MilvusPerformanceConfig = [
     CaseConfigParamInput_SearchList,
     CaseConfigParamInput_Nlist,
     CaseConfigParamInput_Nprobe,
+    CaseConfigParamInput_m,
+    CaseConfigParamInput_nbits,
 ]
 
 WeaviateLoadConfig = [

@@ -249,6 +249,8 @@ MilvusLoadConfig = [
     CaseConfigParamInput_M,
     CaseConfigParamInput_EFConstruction_Milvus,
     CaseConfigParamInput_Nlist,
+    CaseConfigParamInput_m,
+    CaseConfigParamInput_nbits,
 ]
 MilvusPerformanceConfig = [
     CaseConfigParamInput_IndexType,

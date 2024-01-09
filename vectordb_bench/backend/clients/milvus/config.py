@@ -121,7 +121,7 @@ class GPUIVFPQConfig(MilvusIndexConfig, DBCaseConfig):
         }
 
 
-class GPUCagraConfig(MilvusIndexConfig, DBCaseConfig):
+class GPUCAGRAConfig(MilvusIndexConfig, DBCaseConfig):
     graph_degree: int
     intermediate_graph_degree: int
     index: IndexType = IndexType.GPUCAGRA

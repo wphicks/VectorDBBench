@@ -21,6 +21,7 @@ class IndexType(str, Enum):
     ES_HNSW = "hnsw"
     GPUIVFFlat = "GPU_IVF_FLAT"
     GPUIVFPQ = "GPU_IVF_PQ"
+    GPUCAGRA = "GPU_CAGRA"
 
 
 class DBConfig(ABC, BaseModel):

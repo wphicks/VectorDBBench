@@ -121,6 +121,28 @@ class GPUIVFPQConfig(MilvusIndexConfig, DBCaseConfig):
         }
 
 
+class GPUCagraConfig(MilvusIndexConfig, DBCaseConfig):
+    graph_degree: int
+    intermediate_graph_degree: int
+    index: IndexType = IndexType.GPUCAGRA
+
+    def index_param(self) -> dict:
+        return {
+            "metric_type": self.parse_metric(),
+            "index_type": self.index.value,
+            "params": {
+                "graph_degree": self.graph_degree,
+                "intermediate_graph_degree": self.intermediate_graph_degree
+            }
+        }
+
+    def search_param(self) -> dict:
+        return {
+            "metric_type": self.parse_metric(),
+            "params": {},
+        }
+
+
 class IVFFlatConfig(MilvusIndexConfig, DBCaseConfig):
     nlist: int
     nprobe: int | None = None
@@ -164,5 +186,6 @@ _milvus_case_config = {
     IndexType.Flat: FLATConfig,
     IndexType.GPUIVFFlat: GPUIVFFlatConfig,
     IndexType.GPUIVFPQ: GPUIVFPQConfig,
+    IndexType.GPUCAGRA: GPUCAGRAConfig,
 }
 

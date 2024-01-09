@@ -47,6 +47,10 @@ class CaseConfigParamType(Enum):
     probes = "probes"
     m = "m"
     nbits = "nbits"
+    graph_degree = "graph_degree"
+    intermediate_graph_degree = "intermediate_graph_degree"
+    quantizationType = "quantizationType"
+    quantizationRatio = "quantizationRatio"
 
 
 class CustomizedCase(BaseModel):

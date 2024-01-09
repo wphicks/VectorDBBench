@@ -65,6 +65,7 @@ CaseConfigParamInput_IndexType = CaseConfigInput(
             IndexType.AUTOINDEX.value,
             IndexType.GPUIVFFlat.value,
             IndexType.GPUIVFPQ.value,
+            IndexType.GPUCAGRA.value,
         ],
     },
 )
@@ -235,6 +236,32 @@ CaseConfigParamInput_nbits = CaseConfigInput(
     ) == IndexType.GPUIVFPQ.value
 )
 
+CaseConfigParamInput_graph_degree = CaseConfigInput(
+    label=CaseConfigParamType.graph_degree,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 1,
+        "max": 65536,
+        "value": 64,
+    },
+    isDisplayed=lambda config: config.get(
+        CaseConfigParamType.IndexType, None
+    ) == IndexType.GPUCAGRA.value
+)
+
+CaseConfigParamInput_graph_degree = CaseConfigInput(
+    label=CaseConfigParamType.intermediate_graph_degree,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 1,
+        "max": 65536,
+        "value": 128,
+    },
+    isDisplayed=lambda config: config.get(
+        CaseConfigParamType.IndexType, None
+    ) == IndexType.GPUCAGRA.value
+)
+
 CaseConfigParamInput_Lists = CaseConfigInput(
     label=CaseConfigParamType.lists,
     inputType=InputType.Number,
@@ -280,6 +307,8 @@ MilvusLoadConfig = [
     CaseConfigParamInput_Nlist,
     CaseConfigParamInput_m,
     CaseConfigParamInput_nbits,
+    CaseConfigParamInput_graph_degree,
+    CaseConfigParamInput_intermediate_graph_degree,
 ]
 MilvusPerformanceConfig = [
     CaseConfigParamInput_IndexType,

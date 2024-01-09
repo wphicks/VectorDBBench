@@ -249,7 +249,7 @@ CaseConfigParamInput_graph_degree = CaseConfigInput(
     ) == IndexType.GPUCAGRA.value
 )
 
-CaseConfigParamInput_graph_degree = CaseConfigInput(
+CaseConfigParamInput_intermediate_graph_degree = CaseConfigInput(
     label=CaseConfigParamType.intermediate_graph_degree,
     inputType=InputType.Number,
     inputConfig={

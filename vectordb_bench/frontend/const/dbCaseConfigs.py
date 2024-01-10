@@ -320,6 +320,8 @@ MilvusPerformanceConfig = [
     CaseConfigParamInput_Nprobe,
     CaseConfigParamInput_m,
     CaseConfigParamInput_nbits,
+    CaseConfigParamInput_graph_degree,
+    CaseConfigParamInput_intermediate_graph_degree,
 ]
 
 WeaviateLoadConfig = [

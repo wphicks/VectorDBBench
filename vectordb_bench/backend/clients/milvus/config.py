@@ -122,8 +122,8 @@ class GPUIVFPQConfig(MilvusIndexConfig, DBCaseConfig):
 
 
 class GPUCAGRAConfig(MilvusIndexConfig, DBCaseConfig):
-    graph_degree: int
-    intermediate_graph_degree: int
+    graph_degree: int = 64
+    intermediate_graph_degree: int = 128
     index: IndexType = IndexType.GPUCAGRA
 
     def index_param(self) -> dict:

@@ -117,7 +117,7 @@ class FLATConfig(MilvusIndexConfig, DBCaseConfig):
 class GPUIVFFlatConfig(MilvusIndexConfig, DBCaseConfig):
     nlist: int = 1024
     nprobe: int = 64
-    cache_dataset_on_device: str
+    cache_dataset_on_device: str = "false"
     refine_ratio: float | None = None
     index: IndexType = IndexType.GPU_IVF_FLAT
 
@@ -144,7 +144,7 @@ class GPUIVFPQConfig(MilvusIndexConfig, DBCaseConfig):
     nbits: int = 8
     nprobe: int = 32
     refine_ratio: float | None = None
-    cache_dataset_on_device: str
+    cache_dataset_on_device: str = "false"
     index: IndexType = IndexType.GPU_IVF_PQ
 
     def index_param(self) -> dict:
@@ -175,7 +175,7 @@ class GPUCAGRAConfig(MilvusIndexConfig, DBCaseConfig):
     min_iterations: int = 0
     max_iterations: int = 0
     build_algo: str = "IVF_PQ" # IVF_PQ; NN_DESCENT;
-    cache_dataset_on_device: str
+    cache_dataset_on_device: str = "false"
     refine_ratio: float | None = None
     index: IndexType = IndexType.GPU_CAGRA
 

@@ -3,7 +3,7 @@ import typing
 from pydantic import BaseModel
 from vectordb_bench.backend.cases import CaseType
 from vectordb_bench.backend.clients import DB
-from vectordb_bench.backend.clients.api import IndexType
+from vectordb_bench.backend.clients.api import IndexType, CagraBuildAlgo
 
 from vectordb_bench.models import CaseConfigParamType
 
@@ -242,11 +242,10 @@ CaseConfigParamInput_graph_degree = CaseConfigInput(
     inputConfig={
         "min": 1,
         "max": 65536,
-        "value": 64,
+        "value": 32,
     },
-    isDisplayed=lambda config: config.get(
-        CaseConfigParamType.IndexType, None
-    ) == IndexType.GPUCAGRA.value
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
 )
 
 CaseConfigParamInput_intermediate_graph_degree = CaseConfigInput(
@@ -260,6 +259,79 @@ CaseConfigParamInput_intermediate_graph_degree = CaseConfigInput(
     isDisplayed=lambda config: config.get(
         CaseConfigParamType.IndexType, None
     ) == IndexType.GPUCAGRA.value
+)
+
+CaseConfigParamInput_itopk_size = CaseConfigInput(
+    label=CaseConfigParamType.itopk_size,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 1,
+        "max": 65536,
+        "value": 128,
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
+)
+
+CaseConfigParamInput_team_size = CaseConfigInput(
+    label=CaseConfigParamType.team_size,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 0,
+        "max": 65536,
+        "value": 0,
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
+)
+
+CaseConfigParamInput_search_width = CaseConfigInput(
+    label=CaseConfigParamType.search_width,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 0,
+        "max": 65536,
+        "value": 4,
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
+)
+
+CaseConfigParamInput_min_iterations = CaseConfigInput(
+    label=CaseConfigParamType.min_iterations,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 0,
+        "max": 65536,
+        "value": 0,
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
+)
+
+CaseConfigParamInput_max_iterations = CaseConfigInput(
+    label=CaseConfigParamType.max_iterations,
+    inputType=InputType.Number,
+    inputConfig={
+        "min": 0,
+        "max": 65536,
+        "value": 0,
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
+)
+
+CaseConfigParamInput_build_algo = CaseConfigInput(
+    label=CaseConfigParamType.build_algo,
+    inputType=InputType.Option,
+    inputConfig={
+        "options": [
+            CagraBuildAlgo.NN_DESCENT.value,
+            CagraBuildAlgo.IVF_PQ.value,
+        ],
+    },
+    isDisplayed=lambda config: config.get(CaseConfigParamType.IndexType, None)
+    in [IndexType.GPUCAGRA.value],
 )
 
 CaseConfigParamInput_Lists = CaseConfigInput(
@@ -322,6 +394,12 @@ MilvusPerformanceConfig = [
     CaseConfigParamInput_nbits,
     CaseConfigParamInput_graph_degree,
     CaseConfigParamInput_intermediate_graph_degree,
+    CaseConfigParamInput_itopk_size,
+    CaseConfigParamInput_team_size,
+    CaseConfigParamInput_search_width,
+    CaseConfigParamInput_min_iterations,
+    CaseConfigParamInput_max_iterations,
+    CaseConfigParamInput_build_algo,
 ]
 
 WeaviateLoadConfig = [

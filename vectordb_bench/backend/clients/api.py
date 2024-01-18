@@ -24,6 +24,11 @@ class IndexType(str, Enum):
     GPUCAGRA = "GPU_CAGRA"
 
 
+class CagraBuildAlgo(str, Enum):
+    IVF_PQ = "IVF_PQ"
+    NN_DESCENT = "NN_DESCENT"
+
+
 class DBConfig(ABC, BaseModel):
     """DBConfig contains the connection info of vector database
 

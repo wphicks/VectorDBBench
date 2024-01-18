@@ -61,6 +61,7 @@ class Milvus(VectorDB):
                 consistency_level="Session",
             )
 
+            log.info("WHWHWHWHW INDEX CREATION (A)")
             col.create_index(
                 self._vector_field,
                 self.case_config.index_param(),
@@ -101,6 +102,7 @@ class Milvus(VectorDB):
         try:
             self.col.flush()
             # wait for index done and load refresh
+            log.info("WHWHWHWHW INDEX CREATION (B)")
             self.col.create_index(
                 self._vector_field,
                 self.case_config.index_param(),
@@ -132,6 +134,7 @@ class Milvus(VectorDB):
         try:
             if not coll.has_index(index_name=self._index_name):
                 log.info(f"{self.name} create index")
+                log.info("WHWHWHWHW INDEX CREATION (C)")
                 coll.create_index(
                     self._vector_field,
                     self.case_config.index_param(),

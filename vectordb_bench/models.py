@@ -45,12 +45,18 @@ class CaseConfigParamType(Enum):
     numCandidates = "num_candidates"
     lists = "lists"
     probes = "probes"
-    m = "m"
-    nbits = "nbits"
-    graph_degree = "graph_degree"
-    intermediate_graph_degree = "intermediate_graph_degree"
     quantizationType = "quantizationType"
     quantizationRatio = "quantizationRatio"
+    m = "m"
+    nbits = "nbits"
+    intermediate_graph_degree = "intermediate_graph_degree"
+    graph_degree = "graph_degree"
+    itopk_size = "itopk_size"
+    team_size = "team_size"
+    search_width = "search_width"
+    min_iterations = "min_iterations"
+    max_iterations = "max_iterations"
+    build_algo = "build_algo"
 
 
 class CustomizedCase(BaseModel):
